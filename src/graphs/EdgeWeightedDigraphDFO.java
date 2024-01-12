@@ -1,22 +1,24 @@
 package graphs;
 
+import shortestpaths.DirectedEdge;
+import shortestpaths.EdgeWeightedDigraph;
 import stacksqueues.LinkedListStack;
 
-//Topological order
-public class DepthFirstOrder {
+public class EdgeWeightedDigraphDFO {
     private boolean[] marked;
 
     private LinkedListStack<Integer> reversePost;
 
-    public DepthFirstOrder(DirectedG g) {
+    public EdgeWeightedDigraphDFO(EdgeWeightedDigraph g) {
         marked = new boolean[g.size()];
         reversePost = new LinkedListStack<>();
     }
 
-    public void dfs(DirectedG g, int v) {
+    public void dfs(EdgeWeightedDigraph g, int v) {
         this.marked[v] = true;
 
-        for (int w : g.adj(v)) {
+        for (DirectedEdge e : g.adj(v)) {
+            int w = e.to();
             if (!this.marked[w]) {
                 dfs(g, w);
             }
