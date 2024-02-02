@@ -20,6 +20,10 @@ public class MaxPQ<Key extends Comparable<Key>> {
         swim(N);
     }
 
+    public int size() {
+        return N;
+    }
+
     public Key delMax() {
         Key item = pq[1];
         exch(1, N--);
